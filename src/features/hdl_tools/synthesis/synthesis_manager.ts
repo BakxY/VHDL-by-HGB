@@ -211,6 +211,26 @@ export class SynthesisManager
         return IsSuccess;
     }
 
+    public async LaunchProgrammer() : Promise<boolean>
+    {
+        // check, if a synthesis-project is selected
+        if(!this.mActiveProject)
+        {
+            vscode.window.showErrorMessage("No Synthesis-Project selected for launching programmer!");
+            return false;
+        }
+
+        // launch programmer of selected synthesis-project
+        const IsSuccess : boolean = await this.mActiveProject.LaunchProgrammer();
+
+        if(!IsSuccess)
+        {
+            vscode.window.showErrorMessage("Programmer of selected Synthesis-Project could not be launched!");
+        }
+
+        return IsSuccess;
+    }
+
     public async Compile() : Promise<boolean>
     {
         // check, if a synthesis-project is selected
@@ -550,6 +570,9 @@ export class SynthesisManager
         this.mContext.subscriptions.push(disposable);
 
         disposable = vscode.commands.registerCommand("VHDLbyHGB.Synthesis.LaunchGUI", () => { this.LaunchGUI(); });
+        this.mContext.subscriptions.push(disposable);
+
+        disposable = vscode.commands.registerCommand("VHDLbyHGB.Synthesis.LaunchProgrammer", () => { this.LaunchProgrammer(); });
         this.mContext.subscriptions.push(disposable);
 
         disposable = vscode.commands.registerCommand("VHDLbyHGB.Synthesis.SetTopLevel", () => { this.SetTopLevel(); });

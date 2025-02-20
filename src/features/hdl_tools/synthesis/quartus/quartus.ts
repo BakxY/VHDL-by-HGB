@@ -17,6 +17,7 @@ const QUARTUS_PATH_LINUX: string = "/opt/intelFPGA_lite";
 
 const QUARTUS_SHELL = "quartus_sh";
 const QUARTUS_EXE = "quartus";
+const QUARTUS_PROGRAMMER = "quartus_pgmw";
 
 const cFamilyRegex   : RegExp = /^set_global_assignment\s+-name\s+FAMILY\s+"([^"]+)"/;
 const cDeviceRegex   : RegExp = /^set_global_assignment\s+-name\s+DEVICE\s+([^"\s]+)/;
@@ -192,6 +193,15 @@ export class Quartus {
             return undefined;
         }
         return path.join(quartusBinaryPath, QUARTUS_EXE);
+    }
+
+    public static GetProgrammerPath() : string | undefined 
+    {
+        const quartusBinaryPath : string | undefined = this.GetQuartusBinaryPath();
+        if (!quartusBinaryPath) {
+            return undefined;
+        }
+        return path.join(quartusBinaryPath, QUARTUS_PROGRAMMER);
     }
 
     public static GetShellPath() : string | undefined

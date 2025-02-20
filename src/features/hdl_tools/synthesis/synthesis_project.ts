@@ -24,6 +24,8 @@ export interface ISynthesisProject
 
     LaunchGUI() : Promise<boolean>;
 
+    LaunchProgrammer() : Promise<boolean>;
+
     Compile() : Promise<boolean>;
 
     SetTopLevel(entity : VhdlEntity) : Promise<boolean>;

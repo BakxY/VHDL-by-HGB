@@ -308,6 +308,9 @@ Compile synthesis-project
 `VHDLbyHGB.Synthesis.LaunchGUI`
 launch gui of synthesis-project
 
+`VHDLbyHGB.Synthesis.LaunchProgrammer`
+launch programmer of synthesis-project
+
 `VHDLbyHGB.Synthesis.SetDevice`
 set device for synthesis-project (e.g. 5CSEMA5F31C6)
 

@@ -137,6 +137,11 @@
                     "group": "navigation"
                 },
                 {
+                    "command": "VHDLbyHGB.Synthesis.LaunchProgrammer",
+                    "when": "view == vhdlbyhgb-view-synthesis",
+                    "group": "navigation"
+                },
+                {
                     "command": "VHDLbyHGB.Synthesis.SetTopLevel",
                     "when": "view == vhdlbyhgb-view-synthesis",
                     "group": "navigation"
@@ -292,6 +297,14 @@
             {
                 "command": "VHDLbyHGB.Synthesis.LaunchGUI",
                 "title": "VHDLbyHGB.Synthesis.LaunchGUI",
+                "icon": {
+                    "light": "resources/images/general/light/monitor.svg",
+                    "dark": "resources/images/general/dark/monitor.svg"
+                }
+            },
+            {
+                "command": "VHDLbyHGB.Synthesis.LaunchProgrammer",
+                "title": "VHDLbyHGB.Synthesis.LaunchProgrammer",
                 "icon": {
                     "light": "resources/images/general/light/monitor.svg",
                     "dark": "resources/images/general/dark/monitor.svg"

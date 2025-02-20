@@ -7,6 +7,7 @@ export enum CustomQuartusTclScript {
     GenerateProject = "Generate.tcl",
     UpdateFiles = "UpdateFiles.tcl",
     LaunchGUI = "LaunchGUI.tcl",
+    Programmer = "Programmer.tcl",
     Compile = "Compile.tcl",
     TopLevelEntity = "TopLevel.tcl",
     Device = "Device.tcl",

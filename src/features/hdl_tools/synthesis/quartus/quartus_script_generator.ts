@@ -208,6 +208,41 @@ export class QuartusScriptGenerator {
         return scriptPath;
     }
 
+    public static GenerateLaunchProgrammer(quartusProject : QuartusProject) : string | undefined
+    {
+        if(quartusProject.GetFolderPath().length === 0)
+        {
+            vscode.window.showInformationMessage('No existing Quartus-Project -> Programmer cannot be launched!');
+            return undefined;
+        }
+
+        const scriptPath : string = path.join(quartusProject.GetTclScriptsFolder(), CustomQuartusTclScript.Programmer);
+        let script : string = "";
+
+        const programmerPath = Quartus.GetProgrammerPath();
+
+        if(!programmerPath)
+        {
+            vscode.window.showInformationMessage('No Quartus-Installation found -> Programmer cannot be launched!');
+            return undefined;
+        }
+
+        const quartusProjectPath : string = path.join(quartusProject.GetFolderPath(), "output_files", quartusProject.GetName() + ".cdf").replace(/\\/g, "/");
+
+        if(!fs.existsSync(quartusProjectPath))
+        {
+            vscode.window.showInformationMessage('No compiled project found -> Compile project before opening programmer!');
+            return undefined;
+        }
+
+        //Launch Quartus-Programmer
+        script += cExecute + cQuote + (programmerPath.replace(/\\/g, "/")) + cQuote + " " + cQuote + quartusProjectPath + cQuote;
+
+        fs.writeFileSync(scriptPath, script);
+
+        return scriptPath;
+    }
+
     public static GenerateTopLevelEntity(quartusProject : QuartusProject) : string | undefined
     {
         if(quartusProject.GetFolderPath().length === 0)

@@ -144,6 +144,28 @@ export class QuartusProject extends SynthesisProject implements ISynthesisProjec
         return true;
     }
 
+    public async LaunchProgrammer() : Promise<boolean>
+    {
+        const scriptPath = QuartusScriptGenerator.GenerateLaunchProgrammer(this);
+
+        if (!scriptPath)
+        {
+            vscode.window.showErrorMessage(`Launching Quartus-Programmer with project "${this.mName}" failed!`);
+            return false;
+        }
+
+        //Run Tcl-Script for launching programmer
+        const IsSuccess: boolean = await Quartus.RunTclScript(scriptPath, this.mFolderPath, this.mOutputChannel);
+        QuartusScriptGenerator.DeleteScript(scriptPath);
+
+        if (!IsSuccess) {
+            vscode.window.showErrorMessage(`Launching Quartus-Programmer with project "${this.mName}" failed!`);
+            return false;
+        }
+
+        return true;
+    }
+
     public async Compile() : Promise<boolean>
     {
         const scriptPath = QuartusScriptGenerator.GenerateCompile(this);

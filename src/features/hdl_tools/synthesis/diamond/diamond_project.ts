@@ -215,6 +215,12 @@ export class DiamondProject extends SynthesisProject implements ISynthesisProjec
         return true;
     }
 
+    public async LaunchProgrammer(): Promise<boolean> 
+    {
+        vscode.window.showErrorMessage(`Launching programmer has not been implemented for diamond projects!`);
+        return false;
+    }
+
     public async Compile(): Promise<boolean> 
     {
         const scriptPath = DiamondScriptGenerator.GenerateCompile(this);
