@@ -217,7 +217,7 @@ export class DiamondProject extends SynthesisProject implements ISynthesisProjec
 
     public async LaunchProgrammer(): Promise<boolean> 
     {
-        vscode.window.showErrorMessage(`Launching programmer has not been implemented for diamond projects!`);
+        vscode.window.showErrorMessage(`Launching programmer is not supported for diamond projects!`);
         return false;
     }
 
