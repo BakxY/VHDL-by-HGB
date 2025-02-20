@@ -306,8 +306,8 @@
                 "command": "VHDLbyHGB.Synthesis.LaunchProgrammer",
                 "title": "VHDLbyHGB.Synthesis.LaunchProgrammer",
                 "icon": {
-                    "light": "resources/images/general/light/monitor.svg",
-                    "dark": "resources/images/general/dark/monitor.svg"
+                    "light": "resources/images/general/light/programmer.svg",
+                    "dark": "resources/images/general/dark/programmer.svg"
                 }
             },
             {
